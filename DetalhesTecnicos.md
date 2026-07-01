@@ -63,7 +63,7 @@ O sistema adota uma arquitetura clássica desacoplada (Decoupled Architecture), 
 * **Framework de API:** FastAPI (escolhido pela performance nativa assíncrona e documentação Swagger automática).
 * **Bibliotecas de Scraping e Parsing:** BeautifulSoup4, Requests e `re` (Regex estruturado).
 * **Manipulação de Dados:** Pandas (útil caso queira gerar relatórios agregados complexos em memória).
-* **Banco de Dados:** PostgreSQL ou SQLite (para desenvolvimento ágil local).
+* **Banco de Dados:** PostgreSQL.
 
 ### Frontend (Riqueza de Interface)
 * **Ecossistema:** Node.js + React (Vite para build rápido).

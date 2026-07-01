@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: concursos_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: concursos
+      POSTGRES_PASSWORD: concursos
+      POSTGRES_DB: concursos
+    ports:
+      - "5432:5432"
+    volumes:
+      - concursos_pgdata:/var/lib/postgresql/data
+
+volumes:
+  concursos_pgdata:

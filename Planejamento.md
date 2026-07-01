@@ -8,27 +8,27 @@ Estado no início deste planejamento: apenas `DetalhesTecnicos.md` (especificaç
 
 ## Fase 0 — Preparação do Ambiente
 
-- [ ] Inicializar repositório Git na raiz do projeto (se ainda não houver) e criar `.gitignore` (Python + Node)
-- [ ] Criar ambiente virtual Python (`venv`) dentro de `backend/`
-- [ ] Definir estrutura de pastas do backend: `entities/`, `routers/`, `services/`, `scrapers/`, `db/`, `schemas/`
-- [ ] Criar `requirements.txt` inicial (fastapi, uvicorn, pydantic, sqlalchemy, python-dotenv)
-- [ ] Decidir e documentar o banco de dados de desenvolvimento (SQLite local) vs produção (PostgreSQL)
+- [x] Inicializar repositório Git na raiz do projeto (se ainda não houver) e criar `.gitignore` (Python + Node)
+- [x] Criar ambiente virtual Python (`venv`) dentro de `backend/`
+- [x] Definir estrutura de pastas do backend: `entities/`, `routers/`, `services/`, `scrapers/`, `db/`, `schemas/`
+- [x] Criar `requirements.txt` inicial (fastapi, uvicorn, pydantic, sqlalchemy, python-dotenv)
+- [x] Decidir e documentar o banco de dados: **PostgreSQL** tanto em desenvolvimento (via `docker-compose.yml` em `backend/`) quanto em produção (`DATABASE_URL` configurável por `.env`)
 
 ## Fase 1 — Backend: Modelo de Dados e API com Dados Mockados
 
 Objetivo: ter um contrato de API estável antes de investir tempo em scraping.
 
-- [ ] Implementar modelo `Concurso` (Pydantic schema + SQLAlchemy model) conforme o esquema em `DetalhesTecnicos.md` (seção 5)
-- [ ] Implementar modelo `Vaga` (relacionado a `Concurso`, 1:N)
-- [ ] Criar enum de `status` (`Inscricoes_Abertas`, `Aguardando_Edital`, `Finalizado`)
-- [ ] Criar enum de `escolaridade` (`Fundamental`, `Medio`, `Tecnico`, `Superior`)
-- [ ] Popular uma base de dados mockada (fixtures/seed) com 8-10 concursos fictícios cobrindo cidades diferentes (Porto Alegre, Canoas, Pelotas, Caxias do Sul, Santa Maria)
-- [ ] Configurar app FastAPI (`main.py`), CORS habilitado para o frontend local
-- [ ] Endpoint `GET /api/concursos` — listagem com filtros (`cidade`, `palavra_chave`, `faixa_salarial`, `status`) e paginação
-- [ ] Endpoint `GET /api/concursos/{id}` — detalhe de um concurso específico
-- [ ] Endpoint `GET /api/concursos/estatisticas` — KPIs (total de vagas abertas, maior salário, inscrições encerrando na semana) e agregações para gráficos (média salarial por área, distribuição por escolaridade)
-- [ ] Validar documentação automática do Swagger (`/docs`) e revisar tipos de resposta
-- [ ] Escrever testes básicos dos endpoints (pytest + httpx/TestClient)
+- [x] Implementar modelo `Concurso` (Pydantic schema + SQLAlchemy model) conforme o esquema em `DetalhesTecnicos.md` (seção 5)
+- [x] Implementar modelo `Vaga` (relacionado a `Concurso`, 1:N)
+- [x] Criar enum de `status` (`Inscricoes_Abertas`, `Aguardando_Edital`, `Finalizado`)
+- [x] Criar enum de `escolaridade` (`Fundamental`, `Medio`, `Tecnico`, `Superior`)
+- [x] Popular uma base de dados mockada (fixtures/seed) com 8-10 concursos fictícios cobrindo cidades diferentes (Porto Alegre, Canoas, Pelotas, Caxias do Sul, Santa Maria, Gravataí, Novo Hamburgo)
+- [x] Configurar app FastAPI (`main.py`), CORS habilitado para o frontend local
+- [x] Endpoint `GET /api/concursos` — listagem com filtros (`cidade`, `palavra_chave`, `faixa_salarial`, `status`) e paginação
+- [x] Endpoint `GET /api/concursos/{id}` — detalhe de um concurso específico
+- [x] Endpoint `GET /api/concursos/estatisticas` — KPIs (total de vagas abertas, maior salário, inscrições encerrando na semana) e agregações para gráficos (média salarial por área, distribuição por escolaridade)
+- [x] Validar documentação automática do Swagger (`/docs`) e revisar tipos de resposta
+- [x] Escrever testes básicos dos endpoints (pytest + httpx/TestClient)
 
 ## Fase 2 — Frontend: Migração do Mockup para Projeto React Real
 
@@ -66,7 +66,7 @@ Objetivo: sair do HTML estático com Tailwind via CDN para uma SPA de verdade.
 
 ## Fase 4 — Persistência Definitiva e Integração Completa
 
-- [ ] Migrar de SQLite (dev) para PostgreSQL (ou confirmar SQLite para produção, se for portfólio simples)
+- [x] ~~Migrar de SQLite (dev) para PostgreSQL~~ — já decidido usar PostgreSQL desde a Fase 0/1
 - [ ] Criar migrações de banco (Alembic)
 - [ ] Substituir dados mockados da Fase 1 pelos dados reais coletados na Fase 3
 - [ ] Validar que os endpoints da API continuam consistentes com dados reais (casos extremos: concurso sem vaga, sem salário definido, cadastro reserva puro)
